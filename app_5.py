@@ -387,7 +387,7 @@ if resumen_login:
                 return row["Venta"] # Toda la venta del día
             return row["Geo_Feria"] # Divide la porción exacta de ese día
 
-# =========================================================================
+    # =========================================================================
     # REEMPLAZAR DESDE AQUÍ: CÁLCULO Y GENERACIÓN DE EXCEL SEGMENTADO
     # =========================================================================
     
@@ -429,7 +429,7 @@ if resumen_login:
 
     # 5. GENERAR EL EXCEL EN MEMORIA CON MÚLTIPLES HOJAS
     output = io.BytesIO()
-    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+    with pd.ExcelWriter(output, engine='openpyxl') as writer:
         df_mercado.to_excel(writer, index=False, sheet_name='Reporte_Mercados')
         df_feria.to_excel(writer, index=False, sheet_name='Reporte_Ferias')
         resumen_login_df.to_excel(writer, index=False, sheet_name='Resumen_Consolidado')
